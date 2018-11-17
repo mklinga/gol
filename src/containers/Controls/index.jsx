@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { toggleRunning, randomizeData, changeTurnSpeed, clearTable } from '../../modules/game/actions';
-import { getRunningStatus, getTurnSpeed } from '../../modules/game/reducers';
+import { getRunningStatus } from '../../modules/game/reducers';
 
 import './Controls.css';
 
@@ -14,7 +14,7 @@ export class Controls extends React.Component {
 
   changeSpeed (e) {
     const shouldGoFast = e.target.checked;
-    this.props.changeTurnSpeed(shouldGoFast ? 500 : 1000);
+    this.props.changeTurnSpeed(shouldGoFast ? 250 : 500);
   }
 
   render () {
@@ -41,15 +41,13 @@ export class Controls extends React.Component {
             Clear
           </button>
         </div>
-        {/* <input type='text' value={turnSpeed} onChange={this.onChange} /> */}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  running: getRunningStatus(state),
-  turnSpeed: getTurnSpeed(state)
+  running: getRunningStatus(state)
 });
 
 const mapDispatchToProps = dispatch => ({

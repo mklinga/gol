@@ -6,13 +6,39 @@ export const generateRandomTable = tiles => {
     .map(tile => Math.random() < 0.33); // There's a 33% change that the tile will be 'live'
 };
 
-const createDataGetter = (data, columns, rows) => (column, row) => {
-  // Check the grid limits here, return undefined if we are trying to reach over the grid
-  if (column < 0 || column > (columns - 1) || row < 0 || row > (rows - 1)) {
-    return undefined;
+const makeIndexLooker = columns => (x, y) => y * columns + x;
+
+export const addPatternToData = (state, { pattern, x, y }) => {
+  const { data, columns, rows } = state;
+  const getIndexFor = makeIndexLooker(columns);
+  const patternHeight = pattern.length;
+  const patternWidth = pattern[0].length;
+  const newData = [].concat(data);
+
+  // Our pattern might be larger than what fits at the current position, so we cut it off at the border
+  const drawWidth = (x + patternWidth > columns) ? (columns - x) : patternWidth;
+  const drawHeight = (y + patternHeight > rows) ? (rows - y) : patternHeight;
+
+  for (let i = 0; i < drawWidth; i++) {
+    for (let j = 0; j < drawHeight; j++) {
+      // set the column based on the pattern
+      newData[getIndexFor(x + i, y + j)] = pattern[j][i];
+    }
   }
 
-  return data[columns * row + column];
+  return newData;
+};
+
+const createDataGetter = (data, columns, rows) => {
+  const getIndex = makeIndexLooker(columns);
+  return (column, row) => {
+    // Check the grid limits here, return undefined if we are trying to reach over the grid
+    if (column < 0 || column > (columns - 1) || row < 0 || row > (rows - 1)) {
+      return undefined;
+    }
+
+    return data[getIndex(column, row)];
+  };
 };
 
 export const calculateNeighbours = (data, rows, columns) => (_, index) => {

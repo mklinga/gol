@@ -18,7 +18,7 @@ export default props => {
       <div className='draggable-ship-tiles'>
         {
           pattern.map((row, rowIndex) => (
-            <div className='draggable-ship-tiles-row'>
+            <div key={rowIndex} className='draggable-ship-tiles-row'>
               {
                 row.map((column, columnIndex) =>
                   <span

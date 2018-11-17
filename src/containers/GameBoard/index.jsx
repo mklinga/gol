@@ -11,29 +11,26 @@ import './GameBoard.css';
 export class GameBoard extends React.Component {
   constructor (props) {
     super(props);
-    this.loopId = null;
 
+    this.loopId = null;
     this.onDrop = this.onDrop.bind(this);
   }
 
   componentWillReceiveProps (newProps) {
     // The main game loop is initialized here
-    //
-    // If we receive truthy 'running' with props and we are not currently running the loop
-    // (based on this.loopId), we'll launch it up.
-    //
-    // We also handle the opposite case here, where we recieve falsy 'running' prop and the loop
-    // is already running. In that case, we shut it down and reset the this.loopId
 
     const turnSpeedHasChanged = this.props.turnSpeed !== newProps.turnSpeed;
 
     if (newProps.running && this.loopId === null) {
+      // If we should be running but there's no loopId at the moment
       this.props.nextGeneration();
       this.loopId = window.setInterval(this.props.nextGeneration, newProps.turnSpeed);
     } else if (newProps.running && turnSpeedHasChanged) {
+      // If we are already running, but the speed has changed
       window.clearInterval(this.loopId);
       this.loopId = window.setInterval(this.props.nextGeneration, newProps.turnSpeed);
     } else if (!newProps.running && this.loopId !== null) {
+      // If we should stop running
       window.clearInterval(this.loopId);
       this.loopId = null;
     }
