@@ -1,0 +1,14 @@
+:global html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+#app {
+  text-align: left;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}

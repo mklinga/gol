@@ -1,0 +1,7 @@
+#game-board {
+  border-radius: 5px;
+}
+
+#game-board .row {
+  display: flex;
+}

@@ -1,0 +1,26 @@
+.tile {
+  cursor: pointer;
+  height: 1%;
+  width: 100%;
+
+  border: 1px solid #666;
+  display: inline-block;
+  margin: 1px;
+
+  transition: 0.2s ease-in-out;
+}
+
+.tile::before {
+  display: block;
+  content: '';
+  width: 100%;
+  padding-top: 100%;
+}
+
+.tile.on {
+  background: hotpink;
+}
+
+.tile.off {
+  background: white;
+}

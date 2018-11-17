@@ -1,0 +1,61 @@
+#game-controls {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#game-controls .launch-controls {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 3px;
+}
+
+#game-controls .board-actions {
+  margin-bottom: 3px;
+}
+
+#game-controls button.btn {
+  color: white;
+  border: 1px solid eee;
+  box-shadow: 2px 2px 8px #eee;
+  border-radius: 6px;
+  padding: 12px 24px;
+}
+
+#game-controls button.btn-pause {
+  background: #dc5454;
+}
+
+#game-controls button.btn-pause:hover {
+  background: #ea6a6a;
+}
+
+#game-controls button.btn-launch {
+  background: #30b970;
+}
+
+#game-controls button.btn-launch:hover {
+  background: #45d287;
+}
+
+#game-controls button.btn-text {
+  border: none;
+  color: inherit;
+  box-shadow: none;
+  padding: 0 3px;
+  background: transparent;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#game-controls button.btn-text:hover {
+  text-decoration: underline;
+}
+
+#game-controls .launch-controls .speed-control {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 3px;
+  font-size: 11px;
+}

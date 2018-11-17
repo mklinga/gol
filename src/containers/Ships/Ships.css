@@ -1,0 +1,10 @@
+.ships-wrapper {
+  display: flex;
+  text-align: left;
+  margin: 20px;
+}
+
+.help-explainer {
+  font-size: 11px;
+  color: #888;
+}

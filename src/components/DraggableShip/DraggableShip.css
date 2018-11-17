@@ -1,0 +1,20 @@
+.draggable-ship-container {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.draggable-ship-container .draggable-ship-tiles-row {
+  height: 16px;
+}
+
+.draggable-ship-container .draggable-ship-tile {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #666;
+  display: inline-block;
+  margin: 1px;
+}
+
+.draggable-ship-container .draggable-ship-tile.on {
+  background: #8e8e8e;
+}
